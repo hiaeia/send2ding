@@ -1,4 +1,4 @@
-package dingbot
+package send2ding
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/gladmo/dingbot"
+	"github.com/hiaeia/send2ding"
 )
 
 var text = &cobra.Command{
@@ -28,7 +28,7 @@ var text = &cobra.Command{
 			text = args[0]
 		}
 
-		msg := dingbot.TextMessage(text)
+		msg := send2ding.TextMessage(text)
 
 		if len(at) != 0 {
 			err = msg.At(false, at...)

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/gladmo/dingbot/cmd/dingbot"
+	"github.com/hiaeia/send2ding/cmd/send2ding"
 )
 
 func main() {
-	dingbot.Execute()
+	send2ding.Execute()
 }

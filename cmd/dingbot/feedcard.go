@@ -1,4 +1,4 @@
-package dingbot
+package send2ding
 
 import (
 	"encoding/json"
@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/gladmo/dingbot"
+	"github.com/hiaeia/send2ding"
 )
 
 var feedcard = &cobra.Command{
@@ -18,9 +18,9 @@ var feedcard = &cobra.Command{
 			fmt.Println(err.Error())
 		}
 
-		var links []dingbot.Links
+		var links []send2ding.Links
 		for _, v := range link {
-			var oneLink dingbot.Links
+			var oneLink send2ding.Links
 			err := json.Unmarshal([]byte(v), &oneLink)
 			if err != nil {
 				fmt.Println(err.Error())
@@ -30,7 +30,7 @@ var feedcard = &cobra.Command{
 			links = append(links, oneLink)
 		}
 
-		msg := dingbot.FeedCardMessage(links...)
+		msg := send2ding.FeedCardMessage(links...)
 
 		err = dingTalk.Send(msg)
 		if err != nil {

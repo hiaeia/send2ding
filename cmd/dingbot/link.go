@@ -1,4 +1,4 @@
-package dingbot
+package send2ding
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/gladmo/dingbot"
+	"github.com/hiaeia/send2ding"
 )
 
 var link = &cobra.Command{
@@ -36,7 +36,7 @@ var link = &cobra.Command{
 			text = args[0]
 		}
 
-		msg := dingbot.LinkMessage(title, text, messageURL, picURL)
+		msg := send2ding.LinkMessage(title, text, messageURL, picURL)
 
 		err = dingTalk.Send(msg)
 		if err != nil {

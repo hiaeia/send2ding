@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/gladmo/dingbot"
+	"github.com/hiaeia/send2ding"
 )
 
 var markdown = &cobra.Command{
@@ -32,7 +32,7 @@ var markdown = &cobra.Command{
 			text = args[0]
 		}
 
-		msg := dingbot.MarkdownMessage(title, text)
+		msg := send2ding.MarkdownMessage(title, text)
 
 		if len(at) != 0 {
 			err = msg.At(false, at...)

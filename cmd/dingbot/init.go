@@ -1,4 +1,4 @@
-package dingbot
+package send2ding
 
 import (
 	"fmt"

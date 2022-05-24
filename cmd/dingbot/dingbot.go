@@ -1,4 +1,4 @@
-package dingbot
+package send2ding
 
 import (
 	"fmt"
@@ -8,17 +8,17 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/gladmo/dingbot"
+	"github.com/hiaeia/send2ding"
 )
 
 var (
 	cfgFile  string
-	dingTalk *dingbot.DingTalk
+	dingTalk *send2ding.DingTalk
 	Version  = "v1.0.2"
 )
 
 var cmd = &cobra.Command{
-	Use:   "dingbot",
+	Use:   "send2ding",
 	Short: "send dingtalk message",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		token, err := cmd.Parent().PersistentFlags().GetString("token")
@@ -41,14 +41,14 @@ var cmd = &cobra.Command{
 			secret = viper.GetString("secret")
 		}
 
-		dingTalk = dingbot.New(token, secret)
+		dingTalk = send2ding.New(token, secret)
 	},
 }
 
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	cmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/dingbot.toml)")
+	cmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/send2ding.toml)")
 	cmd.PersistentFlags().String("token", "", "dingtalk robot token (require)")
 	cmd.PersistentFlags().String("secret", "", "dingtalk robot secret")
 
@@ -75,14 +75,14 @@ func initConfig() {
 		}
 
 		// check default config file
-		_, err = os.Stat(fmt.Sprintf(`%s/dingbot.toml`, home))
+		_, err = os.Stat(fmt.Sprintf(`%s/send2ding.toml`, home))
 		if err != nil {
 			return
 		}
 
-		// Search config in home directory with name "dingbot" (without extension).
+		// Search config in home directory with name "send2ding" (without extension).
 		viper.AddConfigPath(home)
-		viper.SetConfigName("dingbot")
+		viper.SetConfigName("send2ding")
 		viper.SetConfigType("toml")
 	}
 
