@@ -1,4 +1,4 @@
-module github.com/gladmo/dingbot
+module github.com/hiaeia/send2ding
 
 go 1.14
 
